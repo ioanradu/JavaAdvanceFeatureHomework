@@ -7,15 +7,15 @@ public class Multime {
 
     public Multime() {
         int n = 0;
-        this.dim = 10; // dimensiunea default al array-ului daca se instantiaza obiectul fara a se declara si dimensiunea array-ului
+        this.dim = 10; // dimensiunea default al array-ului
         this.date = new int[dim];
     }
 
     public Multime(int dim) {
-        this();
         //setez dimensiunea array-ul odata cu instantierea obiectului din metoda main().
         this.dim = dim;
         this.date = new int[dim];
+        int n = 0;
     }
 
     public void adauga(int number) {
@@ -36,20 +36,32 @@ public class Multime {
     }
 
     public void extrage(int number) {
+        int index = 0;
         boolean find = false;
         for (int i = 0; i < date.length; i++) {
             if (date[i] == number) {
-                int index = i; // salvez in variabila index index-ul elementului pe care vreau sa-l sterg din array
+                index = i;
                 find = true;
-                for (i = index; i < date.length - 1; i++) {
-                    date[i] = date[i + 1]; // shiftez elementele array-ului spre stanga incepand de la indexul elementului pe care vreau sa-l sterg
-                }
+                break;
             }
         }
-        date[date.length - 1] = 0;
         if (find) {
+            while (index < n && index <= date.length - 2) {// conditia index <= date.length - 2 trebuie pusa pentru ca arunca exceptia ArrayIndexOutOfBoundsException daca dimensiunea tabloului e mai mica de 4 si se incearca a se face o extragere a unui element
+                date[index] = date[index + 1];
+                index++;
+            }
+            date[date.length - 1] = 0; // dupa ce facem shiftarea spre stanga, in cazul in care toate elementele array-ului au valori, ultimul element va ramane cu  valoarea initiala
             n--;
         }
+
+        // Varianta fara n
+        /* if (find) {
+            while (index < date.length - 1) {
+                date[index] = date[index + 1];
+                index++;
+            }
+            date[date.length - 1] = 0;
+        }*/
     }
 
     public void afisare() {

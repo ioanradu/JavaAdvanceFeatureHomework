@@ -2,7 +2,7 @@ package inheritancePolymorphismAbstraction.exercitiul1;
 
 public class Main {
     public static void main(String[] args) {
-        Multime m = new Multime(7);
+        Multime m = new Multime(3);
         m.afisare();
         m.adauga(4);
         m.afisare();
