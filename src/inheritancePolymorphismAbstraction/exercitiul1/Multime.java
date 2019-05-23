@@ -61,6 +61,7 @@ public class Multime {
                 index++;
             }
             date[date.length - 1] = 0;
+            n--;
         }*/
     }
 
